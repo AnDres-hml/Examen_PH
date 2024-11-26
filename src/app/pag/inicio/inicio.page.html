@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Avisos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list *ngIf="avisos.length > 0; else noAvisos">
+    <ion-item *ngFor="let aviso of avisos">
+      <ion-label>
+        <h2>{{ aviso.titulo }}</h2>
+        <p>{{ aviso.fecha | date: 'short' }}</p>
+        <p>{{ aviso.descripcion }}</p>
+      </ion-label>
+      <ion-button slot="end" color="danger" (click)="eliminarAviso(aviso.id)">Eliminar</ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ng-template #noAvisos>
+    <p>No hay avisos disponibles.</p>
+  </ng-template>
+</ion-content>
+
